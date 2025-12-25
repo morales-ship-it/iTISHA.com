@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+  <script type="module" src="js/checkout.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="logo">iTISHA</a>
+    <nav>
+      <a href="cart.html" class="cart-link">
+        Cart <span id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="checkout-container">
+    <h1>Checkout</h1>
+
+    <section id="order-summary" class="order-summary"></section>
+
+    <section class="payment-section">
+      <h2>Payment</h2>
+      <p>Payment via Flutterwave (Safaricom M-Pesa) will be integrated here.</p>
+      <button id="pay-btn" class="btn-primary">Pay now</button>
+    </section>
+  </main>
+</body>
+</html>
