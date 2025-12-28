@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Your Cart</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/cart.css" />
+
+  <!-- Script -->
   <script type="module" src="js/cart-page.js"></script>
 </head>
 <body>
@@ -24,22 +27,27 @@
   </header>
 
   <!-- CART MAIN -->
-  <main class="cart-container">
+  <main class="cart-main">
     <h1 class="section-title">Your Cart</h1>
-    <section id="cart-list" class="cart-list"></section>
 
-    <aside class="cart-summary">
-      <div class="summary-row">
-        <span>Subtotal</span>
-        <strong class="currency">Ksh <span id="subtotal">0</span></strong>
-      </div>
-      <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
-    </aside>
+    <div class="cart-container">
+      <!-- Cart List -->
+      <section id="cart-list" class="cart-list"></section>
+
+      <!-- Cart Summary -->
+      <aside class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong class="currency">Ksh <span id="subtotal">0</span></strong>
+        </div>
+        <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
+      </aside>
+    </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="footer">
-    © 2025 iTISHA.com | Codded By Towett Amos
+    © 2025 iTISHA.com | Coded By Towett Amos
   </footer>
 </body>
 </html>

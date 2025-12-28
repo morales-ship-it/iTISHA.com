@@ -3,33 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <title>Checkout</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/checkout.css" />
   <script type="module" src="js/checkout.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <a href="index.html" class="logo">iTISHA</a>
-    <nav>
-      <a href="cart.html" class="cart-link">
-        Cart <span id="cart-count">0</span>
-      </a>
-    </nav>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="nav">
+      <!-- ✅ Brand uses consistent site styling -->
+      <a href="index.html" class="brand">iTISHA</a>
+      <div class="nav-actions">
+        <!-- ✅ Removed cart counter -->
+        <a href="cart.html" class="cart">🛒</a>
+      </div>
+    </div>
   </header>
 
+  <!-- CHECKOUT MAIN -->
   <main class="checkout-container">
-    <h1>Checkout</h1>
+    <h1 class="section-title">Checkout</h1>
 
-    <section id="order-summary" class="order-summary"></section>
+    <!-- Order summary populated dynamically -->
+    <section id="order-summary" class="summary-list">
+      <!-- Example item -->
+      <div class="summary-item">
+        <img src="images/sample-product.jpg" alt="Product">
+        <div class="text">
+          <strong>Product Name</strong>
+          <span>Ksh 500</span>
+        </div>
+        <span class="price">Ksh 500</span>
+      </div>
+      <!-- More items populated dynamically -->
+    </section>
 
+    <!-- Totals section -->
+    <div class="totals">
+      <div class="row">
+        <span>Subtotal</span>
+        <strong>Ksh 1500</strong>
+      </div>
+      <div class="grand">Grand Total: Ksh 1500</div>
+      <!-- ✅ Centered checkout button -->
+      <button id="pay-btn" class="checkout-btn">Confirm & Pay</button>
+    </div>
+
+    <!-- Payment section -->
     <section class="payment-section">
       <h2>Payment</h2>
-      <p>Payment via Flutterwave (Safaricom M-Pesa) will be integrated here.</p>
-      <button id="pay-btn" class="btn-primary">Pay now</button>
+      <p>Payment via Flutterwave (Safaricom M-Pesa) will be integrated here soon.</p>
     </section>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 iTISHA.com | Coded By Towett Amos
+  </footer>
 </body>
 </html>

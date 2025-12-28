@@ -1,9 +1,12 @@
+/* CHECKOUT PAGE STYLES */
+
 .checkout-container {
   max-width: 1000px;
-  margin: 24px auto;
-  padding: 0 16px;
+  margin: 0 auto;
+  padding: 120px 16px 80px; /* ✅ clears fixed header/footer */
 }
 
+/* Summary list */
 .summary-list {
   display: grid;
   gap: 12px;
@@ -33,20 +36,54 @@
   opacity: 0.8;
 }
 
-/* ✅ Centered totals section */
+/* Totals section */
 .totals {
-  display: flex;              /* switch to flex for easy centering */
-  flex-direction: column;     /* stack rows vertically */
-  align-items: center;        /* center horizontally */
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* ✅ center horizontally */
+  gap: 12px;
   padding: 16px;
   background: var(--card-bg, #fff);
   border-radius: var(--radius, 8px);
   box-shadow: var(--shadow-sm);
-  text-align: center;         /* center text inside rows */
+  text-align: center;
 }
 
 .totals .grand {
   margin-top: 8px;
   font-weight: 700;
+}
+
+/* ✅ Center checkout button */
+.checkout-btn {
+  display: block;             /* ✅ allows margin auto */
+  margin: 16px auto 0;        /* ✅ centers horizontally */
+  min-width: 220px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background: var(--green-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.checkout-btn:hover {
+  background: var(--green-dark);
+}
+
+/* ✅ Brand consistency */
+.brand {
+  font-weight: 700;
+  font-family: var(--font-main);
+  color: var(--green-primary);
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+/* Title */
+.section-title {
+  text-align: center;
+  margin: 0 0 24px;
 }

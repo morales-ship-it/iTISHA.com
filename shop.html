@@ -16,15 +16,15 @@
 <body class="shop-page">
 
   <header class="header">
-  <div class="nav">
-    <div class="brand">iTISHA</div>
-    <div class="nav-actions">
-      <a href="login.html">Login</a>
-      <a href="register.html">Sign Up</a>
-      <a href="cart.html" class="cart">🛒 <span id="cart-count">0</span></a>
+    <div class="nav">
+      <div class="brand">iTISHA</div>
+      <div class="nav-actions">
+        <a href="login.html">Login</a>
+        <a href="register.html">Sign Up</a>
+        <a href="cart.html" class="cart">🛒 <span id="cart-count">0</span></a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <!-- SHOP HERO -->
   <section class="shop-hero hero">
@@ -33,12 +33,13 @@
     <p id="shop-desc">Fresh products delivered fast</p>
   </section>
 
-  <!-- CATEGORIES -->
-  <section id="category-row" class="categories"></section>
-
   <!-- PRODUCTS GRID -->
   <section class="section">
     <h2 class="section-title">Products</h2>
+
+    <!-- ✅ Categories row moved here for Instacart-style look -->
+    <div id="category-row" class="categories"></div>
+
     <div class="products-grid" id="shop-products"></div>
   </section>
 

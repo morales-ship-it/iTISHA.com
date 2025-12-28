@@ -1,17 +1,44 @@
 /* AUTH PAGE STYLES */
 
+/* Fixed brand header for auth pages */
+.auth-header {
+  position: fixed;          /* ✅ stays pinned at top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+  z-index: 100;
+  padding: 16px;
+  text-align: center;
+}
+
+.auth-header .brand {
+  font-weight: 700;
+  font-family: var(--font-main);
+  color: var(--green-primary);
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+/* Container */
 .auth-container {
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 0 16px;
-  padding-bottom: 80px; /* ensures content never hides behind footer */
+  width: 90%;              
+  max-width: 400px;        
+  margin: 0 auto;          
+  padding: 120px 16px 80px; /* ✅ extra top padding to clear fixed brand */
+  display: flex;
+  align-items: center;     
+  justify-content: center;
+  min-height: 100vh;       
 }
 
 .auth-card {
+  width: 100%;             
   background: var(--white);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
-  padding: 24px;
+  padding: 8%;             
 }
 
 .auth-tabs {
@@ -40,7 +67,7 @@
   flex-direction: column;
   gap: 16px;
   opacity: 1;
-  transition: transform 0.4s ease, opacity 0.4s ease; /* merged fade + slide */
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .auth-form h2 {
@@ -78,7 +105,7 @@
   display: none;
 }
 
-/* ✅ Forgot Password link styling */
+/* Forgot Password link styling */
 .forgot-password {
   text-align: center;
   margin-top: 10px;
@@ -119,9 +146,14 @@
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* ✅ Auth-specific brand override: center only */
-.brand {
-  display: block;
-  text-align: center;
-  margin: 20px 0;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .auth-container {
+    width: 95%;
+    padding: 140px 16px 80px; /* ✅ more breathing room on small screens */
+  }
+
+  .auth-card {
+    padding: 10%;
+  }
 }

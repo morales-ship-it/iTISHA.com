@@ -1,8 +1,9 @@
+
 /* VERIFIED SHOPS (GRID) */
 .shop-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, 1fr); /* ✅ preserved 4 columns */
+  gap: 16px; /* keep explicit gap */
 }
 
 .shop-card {
@@ -10,11 +11,12 @@
 }
 
 .shop-card img {
-  width: 70px;
-  height: 70px;
+  width: 70px;              /* ✅ explicit size preserved */
+  height: 70px;             /* ✅ explicit size preserved */
   border-radius: 50%;
   margin: auto;
   border: 3px solid var(--green-primary);
+  object-fit: cover;        /* ✅ logos fill circular frames */
 }
 
 .shop-card p {
@@ -36,10 +38,13 @@
 }
 
 .seller-row img {
-  width: 80px;
-  height: 60px;
+  width: auto;              /* ✅ let width adjust naturally */
+  height: 140px;            /* ✅ taller frame for bottles/products */
+  max-width: 100%;          /* prevent overflow */
   border-radius: 12px;
-  object-fit: cover;
+  object-fit: contain;      /* ✅ show full product image without cropping */
+  display: block;
+  margin: 0 auto;
 }
 
 .visit-btn {
@@ -53,6 +58,6 @@
 /* RESPONSIVE (landing-specific) */
 @media (max-width: 768px) {
   .shop-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 per row mobile */
+    grid-template-columns: repeat(4, 1fr); /* ✅ still 4 per row on mobile */
   }
 }
