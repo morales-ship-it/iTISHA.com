@@ -12,9 +12,6 @@ const shopId = params.get("shop");
 ========================= */
 const shop = shops.find(s => s.id === shopId);
 
-/* =========================
-   RENDER SHOP HEADER
-========================= */
 if (shop) {
   document.getElementById("shop-name").textContent = shop.name;
   document.getElementById("shop-image").src = shop.img;
@@ -132,9 +129,31 @@ function syncAllItemCounts() {
 }
 
 /* =========================
+   AUTH BUTTONS CONSISTENCY
+========================= */
+function handleAuthButtons() {
+  const loginBtn = document.getElementById("login-btn");
+  const signupBtn = document.getElementById("signup-btn");
+
+  // Example: check localStorage for a "user" object
+  const user = localStorage.getItem("user");
+
+  if (user) {
+    // ✅ User logged in → hide buttons
+    if (loginBtn) loginBtn.style.display = "none";
+    if (signupBtn) signupBtn.style.display = "none";
+  } else {
+    // ✅ User not logged in → show buttons
+    if (loginBtn) loginBtn.style.display = "inline-block";
+    if (signupBtn) signupBtn.style.display = "inline-block";
+  }
+}
+
+/* =========================
    INIT
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
   renderCategories();
   renderProducts();
+  handleAuthButtons();   // ✅ call it here
 });

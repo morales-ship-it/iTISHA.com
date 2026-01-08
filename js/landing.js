@@ -61,63 +61,126 @@ function renderCategories() {
 }
 
 /* =========================
-   POPULAR PRODUCTS
-   - Uses product IDs
-   - Cart logic intact
-   - Accepts category filter
+   POPULAR PRODUCTS (Tier One)
+   - Top 4 per shop by popularity
+   - Shuffled once per browser session
 ========================= */
+function buildPopularSet() {
+  let combined = [];
+  shops.forEach(shop => {
+    let shopProducts = products
+      .filter(p => p.shopId === shop.id)
+      .sort((a, b) => b.popularity - a.popularity);
+    combined.push(...shopProducts.slice(0, 4));
+  });
+  return shuffle(combined);
+}
+
 function renderProducts(filter = "All") {
   const grid = document.getElementById("products-grid");
   if (!grid) return;
 
   grid.innerHTML = "";
 
-  let view = products.slice(0, 20);
-  if (filter !== "All") {
-    view = view.filter(p => p.category === filter);
+  if (!sessionStorage.getItem("popularSet")) {
+    sessionStorage.setItem("popularSet", JSON.stringify(buildPopularSet()));
   }
+  let popularSet = JSON.parse(sessionStorage.getItem("popularSet")) || [];
 
-  view.forEach(product => {
-    grid.innerHTML += `
-      <div class="product" data-id="${product.id}">
-        <img src="${product.img}" alt="${product.name}">
-        <h4>${product.name}</h4>
-        <p class="desc">${product.description}</p>
-        <p>Ksh ${product.price}</p>
+  let view = filter === "All"
+    ? popularSet
+    : popularSet.filter(p => p.category === filter);
 
-        <div class="controls">
-          <button class="btn-minus" aria-label="Remove from cart">−</button>
-          <span class="item-count" data-id="${product.id}">0</span>
-          <button class="btn-plus" aria-label="Add to cart">+</button>
-        </div>
-      </div>
-    `;
-  });
+  const capped = view.slice(0, 20);
+  capped.forEach(product => appendProductCard(grid, product));
 
-  // ✅ Event delegation for cart buttons
-  grid.addEventListener("click", (e) => {
-    const minus = e.target.closest(".btn-minus");
-    const plus = e.target.closest(".btn-plus");
-    if (!minus && !plus) return;
-
-    const card = e.target.closest(".product");
-    if (!card) return;
-    const productId = card.getAttribute("data-id");
-
-    if (plus) {
-      e.preventDefault();
-      addToCart(productId);
-      updateItemCount(productId);
-    }
-    if (minus) {
-      e.preventDefault();
-      removeFromCart(productId);
-      updateItemCount(productId);
-    }
-  });
-
-  // ✅ Sync counts on initial render
   syncAllItemCounts();
+}
+
+/* =========================
+   SEE MORE (Tier Two)
+   - Next 4 per shop by popularity
+   - Shuffled once per session
+   - Button disappears after use
+========================= */
+function buildTierTwoSet() {
+  let combined = [];
+  shops.forEach(shop => {
+    let shopProducts = products
+      .filter(p => p.shopId === shop.id)
+      .sort((a, b) => b.popularity - a.popularity);
+    combined.push(...shopProducts.slice(4, 8)); // skip first 4
+  });
+  return shuffle(combined);
+}
+
+function handleSeeMore() {
+  const grid = document.getElementById("products-grid");
+  if (!grid) return;
+
+  if (!sessionStorage.getItem("popularSetTier2")) {
+    sessionStorage.setItem("popularSetTier2", JSON.stringify(buildTierTwoSet()));
+  }
+  let tierTwoSet = JSON.parse(sessionStorage.getItem("popularSetTier2")) || [];
+
+  tierTwoSet.forEach(product => appendProductCard(grid, product, true));
+
+  syncAllItemCounts();
+
+  // 🔑 Hide the See More button after tier two is populated
+  const seeMoreBtn = document.querySelector(".popular-actions .btn-primary");
+  if (seeMoreBtn) {
+    seeMoreBtn.style.display = "none";
+  }
+}
+
+/* =========================
+   PRODUCT CARD HELPER
+========================= */
+function appendProductCard(grid, product, animate = false) {
+  const card = document.createElement("div");
+  card.className = "product";
+  card.setAttribute("data-id", product.id);
+  card.innerHTML = `
+    <img src="${product.img}" alt="${product.name}">
+    <h4>${product.name}</h4>
+    <p class="desc">${product.description}</p>
+    <p>Ksh ${product.price}</p>
+    <div class="controls">
+      <button class="btn-minus" aria-label="Remove from cart">−</button>
+      <span class="item-count" data-id="${product.id}">0</span>
+      <button class="btn-plus" aria-label="Add to cart">+</button>
+    </div>
+  `;
+  if (animate) {
+    card.classList.add("fade-in");
+  }
+  grid.appendChild(card);
+
+  // ✅ Event delegation for cart buttons (attach once)
+  if (!grid.__cartBound) {
+    grid.addEventListener("click", (e) => {
+      const minus = e.target.closest(".btn-minus");
+      const plus = e.target.closest(".btn-plus");
+      if (!minus && !plus) return;
+
+      const card = e.target.closest(".product");
+      if (!card) return;
+      const productId = card.getAttribute("data-id");
+
+      if (plus) {
+        e.preventDefault();
+        addToCart(productId);
+        updateItemCount(productId);
+      }
+      if (minus) {
+        e.preventDefault();
+        removeFromCart(productId);
+        updateItemCount(productId);
+      }
+    });
+    grid.__cartBound = true;
+  }
 }
 
 /* =========================
@@ -143,7 +206,23 @@ function syncAllItemCounts() {
    INIT
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
+  // Detect explicit refresh
+  const navType = performance.getEntriesByType("navigation")[0].type;
+  if (navType === "reload") {
+    sessionStorage.removeItem("popularSet");
+    sessionStorage.removeItem("popularSetTier2");
+  }
+
   renderShops();
   renderCategories();
   renderProducts();
+
+  // Attach See More button
+  const seeMoreBtn = document.querySelector(".popular-actions .btn-primary");
+  if (seeMoreBtn) {
+    seeMoreBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      handleSeeMore();
+    });
+  }
 });

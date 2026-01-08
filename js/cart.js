@@ -78,7 +78,7 @@ export function clearCart() {
   updateCartCountUI();
 }
 
-/* ✅ NEW: Initialize cart count on page load and make cart icon clickable */
+/* ✅ NEW: Initialize cart count, cart icon click, and auth buttons */
 document.addEventListener("DOMContentLoaded", () => {
   loadCart();
   updateCartCountUI();
@@ -89,5 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
     cartIcon.addEventListener("click", () => {
       window.location.href = "cart.html";
     });
+  }
+
+  // 🔑 Handle Login/Signup buttons visibility
+  const loginBtn = document.getElementById("login-btn");
+  const signupBtn = document.getElementById("signup-btn");
+  const user = localStorage.getItem("user"); // adjust if you store auth differently
+
+  if (user) {
+    if (loginBtn) loginBtn.style.display = "none";
+    if (signupBtn) signupBtn.style.display = "none";
+  } else {
+    if (loginBtn) loginBtn.style.display = "inline-block";
+    if (signupBtn) signupBtn.style.display = "inline-block";
   }
 });

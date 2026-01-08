@@ -75,7 +75,7 @@ export const products = [
   { id: "p1", shopId: "shop001", name: "Premium Raha cooking floor 2kg", price: 1200, img: "assets/images/products/31014_main.avif", category: "Groceries", description: "High-quality rice for everyday meals.", popularity: 85 },
   { id: "p2", shopId: "shop001", name: "Fresh Milk 1L", price: 150, img: "assets/images/products/images (5).jpg", category: "Beverages", description: "Pure and fresh milk from local farms.", popularity: 92 },
   { id: "p11", shopId: "shop001", name: "Brown Bread", price: 60, img: "assets/images/products/82689_main.avif", category: "Groceries", description: "Freshly baked brown bread.", popularity: 75 },
-  { id: "p12", shopId: "shop001", name: "Freshfri cooking oil 2L", price: 360, img: "assets/images/products/41661_main.avif", category: "Beverages", description: "Refreshing orange juice.", popularity: 80 },
+  { id: "p12", shopId: "shop001", name: "Freshfri cooking oil 2L", price: 360, img: "assets/images/products/41661_main.avif", category: "Beverages", description: "Refreshing orange juice.", popularity: 50 },
   { id: "p13", shopId: "shop001", name: "Aerial Wasing Powder", price: 450, img: "assets/images/products/23437_main.avif", category: "Household", description: "Powerful cleaning detergent.", popularity: 68 },
   { id: "p14", shopId: "shop001", name: "Potato Chips", price: 120, img: "assets/images/products/images (4).jpg", category: "Snacks", description: "Crispy potato chips.", popularity: 85 },
   { id: "p15", shopId: "shop001", name: "Bentley Tea Bags 100g", price: 380, img: "assets/images/products/1.webp", category: "Beverages", description: "Classic black tea bags.", popularity: 76 },

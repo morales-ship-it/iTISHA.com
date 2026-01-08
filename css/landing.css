@@ -186,3 +186,21 @@ main {
   padding-bottom: 6rem;   /* adjust to your footer’s height */
   box-sizing: border-box;
 }
+
+/* Fade-in animation for tier two products */
+.product.fade-in {
+  opacity: 0;
+  transform: translateY(20px);   /* subtle slide up */
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
