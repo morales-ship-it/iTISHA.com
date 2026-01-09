@@ -1,5 +1,6 @@
 import { shops, products } from "./data.js";
 import { addToCart, removeFromCart, getCartItems } from "./cart.js";
+import { openProductModal } from "./productchip.js"; // ✅ added import for modal
 
 /* =========================
    UTILS
@@ -62,8 +63,6 @@ function renderCategories() {
 
 /* =========================
    POPULAR PRODUCTS (Tier One)
-   - Top 4 per shop by popularity
-   - Shuffled once per browser session
 ========================= */
 function buildPopularSet() {
   let combined = [];
@@ -99,9 +98,6 @@ function renderProducts(filter = "All") {
 
 /* =========================
    SEE MORE (Tier Two)
-   - Next 4 per shop by popularity
-   - Shuffled once per session
-   - Button disappears after use
 ========================= */
 function buildTierTwoSet() {
   let combined = [];
@@ -109,7 +105,7 @@ function buildTierTwoSet() {
     let shopProducts = products
       .filter(p => p.shopId === shop.id)
       .sort((a, b) => b.popularity - a.popularity);
-    combined.push(...shopProducts.slice(4, 8)); // skip first 4
+    combined.push(...shopProducts.slice(4, 8));
   });
   return shuffle(combined);
 }
@@ -127,7 +123,6 @@ function handleSeeMore() {
 
   syncAllItemCounts();
 
-  // 🔑 Hide the See More button after tier two is populated
   const seeMoreBtn = document.querySelector(".popular-actions .btn-primary");
   if (seeMoreBtn) {
     seeMoreBtn.style.display = "none";
@@ -136,6 +131,8 @@ function handleSeeMore() {
 
 /* =========================
    PRODUCT CARD HELPER
+   - Preserves description, plus/minus, counts
+   - Adds modal click (chip popup) ONLY for popular + category sections
 ========================= */
 function appendProductCard(grid, product, animate = false) {
   const card = document.createElement("div");
@@ -157,7 +154,7 @@ function appendProductCard(grid, product, animate = false) {
   }
   grid.appendChild(card);
 
-  // ✅ Event delegation for cart buttons (attach once)
+  // ✅ Cart buttons (unchanged)
   if (!grid.__cartBound) {
     grid.addEventListener("click", (e) => {
       const minus = e.target.closest(".btn-minus");
@@ -181,6 +178,12 @@ function appendProductCard(grid, product, animate = false) {
     });
     grid.__cartBound = true;
   }
+
+  // 🔑 New: modal popup when clicking card (but not controls)
+  card.addEventListener("click", (e) => {
+    if (e.target.closest(".controls")) return; // ignore plus/minus clicks
+    openProductModal(product);
+  });
 }
 
 /* =========================
@@ -206,7 +209,6 @@ function syncAllItemCounts() {
    INIT
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-  // Detect explicit refresh
   const navType = performance.getEntriesByType("navigation")[0].type;
   if (navType === "reload") {
     sessionStorage.removeItem("popularSet");
@@ -217,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCategories();
   renderProducts();
 
-  // Attach See More button
   const seeMoreBtn = document.querySelector(".popular-actions .btn-primary");
   if (seeMoreBtn) {
     seeMoreBtn.addEventListener("click", (e) => {
