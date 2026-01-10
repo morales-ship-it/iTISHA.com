@@ -223,9 +223,9 @@ export const products = [
   description: "Premium vodka.", popularity: 69,
   images: [
     "assets/images/products/images (7).jpg",
-    "assets/images/products/placeholder1.jpg",
-    "assets/images/products/placeholder2.jpg",
-    "assets/images/products/placeholder3.jpg"
+    "assets/images/products/sub-products/absolut-vodka-bottle-display-swedish-alcohol-manufacturer-duty-free-shop-displays-absolut-vodka-bottles-kuala-lumpur-110722421.webp",
+    "assets/images/products/sub-products/display-bottles-absolut-vodka-binneys-liqour-store-springfield-illinois-il-usa-september-233655396.webp",
+    "assets/images/products/sub-products/OIP.webp"
   ],
   details: "Crystal-clear vodka distilled for purity and smoothness. Perfect for cocktails, mixed drinks, or served chilled."
 },
@@ -235,9 +235,9 @@ export const products = [
   description: "Locally brewed craft beer.", popularity: 74,
   images: [
     "assets/images/products/Greenspoon-Kenya-Bila-Shaka-Capitan-Craft-Beer-500ml.jpg",
-    "assets/images/products/placeholder1.jpg",
-    "assets/images/products/placeholder2.jpg",
-    "assets/images/products/placeholder3.jpg"
+    "assets/images/products/sub-products/craft-beer-on-a-supermarket-shelf-ireland-M5A7HE.jpg",
+    "assets/images/products/sub-products/bottles-beer-stacked-store-shelving-87005979.webp",
+    "assets/images/products/sub-products/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsX29mZmljZV81M19waG90b19vZl9oYW5kX2hvbGRpbmdfYmVlcl9ib3R0bGVfYWVzdGhldGljX18.jpg"
   ],
   details: "Handcrafted beer brewed locally with unique flavors. A refreshing choice for those who enjoy artisanal beverages."
 },
@@ -345,9 +345,9 @@ export const products = [
   description: "Ripe organic mangoes.", popularity: 86,
   images: [
     "assets/images/products/images (11).jpg",
-    "assets/images/products/placeholder1.jpg",
-    "assets/images/products/placeholder2.jpg",
-    "assets/images/products/placeholder3.jpg"
+    "assets/images/products/sub-products/Mango-shutterstock_548103076.jpg",
+    "assets/images/products/sub-products/Fresh-Mangoes..jpg",
+    "assets/images/products/sub-products/fresh-fruits-500x500.webp"
   ],
   details: "Sweet and juicy organic mangoes. Perfect for fresh eating, smoothies, or desserts."
 },
@@ -357,9 +357,9 @@ export const products = [
   description: "No added sugar peanut butter.", popularity: 81,
   images: [
     "assets/images/products/image-removebg-preview - 2025-09-25T133802.701-800x800.png",
-    "assets/images/products/placeholder1.jpg",
-    "assets/images/products/placeholder2.jpg",
-    "assets/images/products/placeholder3.jpg"
+    "assets/images/products/sub-products/stock-photo-grovetown-ga-usa-honey-on-a-retail-store-shelf-mountain-ridge-honey-and-prices-2122342355.jpg",
+    "assets/images/products/sub-products/pure-honey-packed-plastic-containers-kuala-lumpur-malaysia-november-pure-honey-packed-plastic-containers-displayed-sale-208378747.webp",
+    "assets/images/products/sub-products/gettyimages-2154717569-612x612.jpg"
   ],
   details: "Natural honey with no additives. A wholesome sweetener that retains enzymes and nutrients from the hive."
 },
@@ -407,9 +407,9 @@ export const products = [
   description: "Noise-cancelling Bluetooth headphones.", popularity: 84,
   images: [
     "assets/images/products/images (12).jpg",
-    "assets/images/products/placeholder1.jpg",
-    "assets/images/products/placeholder2.jpg",
-    "assets/images/products/placeholder3.jpg"
+    "assets/images/products/sub-products/OIP (1).webp",
+    "assets/images/products/sub-products/s-l1200.jpg",
+    "assets/images/products/sub-products/images.jpg"
   ],
   details: "Comfortable wireless headphones with noise cancellation and long battery life. Great for music, calls, and travel."
 },
