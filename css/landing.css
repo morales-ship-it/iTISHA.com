@@ -241,8 +241,7 @@ main {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  gap: 0.5rem;
-  padding: 0.5rem;
+  scroll-snap-type: x mandatory;
 }
 
 .modal-carousel::-webkit-scrollbar {
@@ -250,11 +249,11 @@ main {
 }
 
 .carousel-img {
-  flex: 0 0 auto;
-  width: 100%;
-  max-width: 250px;
+  flex: 0 0 100%;          /* each image fills the carousel width */
+  max-width: 100%;
   border-radius: 8px;
   object-fit: cover;
+  scroll-snap-align: center;
 }
 
 /* Minimal modern arrows */
