@@ -1,6 +1,6 @@
 import { shops, products } from "./data.js";
 import { addToCart, removeFromCart, getCartItems } from "./cart.js";
-import { openProductModal } from "./productchip.js"; // ✅ added import for modal
+import { openProductPanel } from "./productpanel.js"; // ✅ new import
 
 /* =========================
    UTILS
@@ -132,7 +132,7 @@ function handleSeeMore() {
 /* =========================
    PRODUCT CARD HELPER
    - Preserves description, plus/minus, counts
-   - Adds modal click (chip popup) ONLY for popular + category sections
+   - Opens product panel on card click
 ========================= */
 function appendProductCard(grid, product, animate = false) {
   const card = document.createElement("div");
@@ -179,10 +179,10 @@ function appendProductCard(grid, product, animate = false) {
     grid.__cartBound = true;
   }
 
-  // 🔑 New: modal popup when clicking card (but not controls)
+  // ✅ New: open product panel when clicking card (but not controls)
   card.addEventListener("click", (e) => {
-    if (e.target.closest(".controls")) return; // ignore plus/minus clicks
-    openProductModal(product);
+    if (e.target.closest(".controls")) return;
+    openProductPanel(product);
   });
 }
 
