@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details | iTISHA.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/productpanel.css"> <!-- ✅ reuse panel styles -->
+
+  <script type="module" src="js/productpage.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="nav">
+    <div class="brand">iTISHA</div>
+    <div class="nav-actions">
+      <a href="auth.html" class="btn-secondary">Login</a>
+      <a href="auth.html?tab=register" class="btn-primary">Sign Up</a>
+      <div class="cart" id="cart-icon">🛒 <span id="cart-count">0</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ✅ Back button for mobile users -->
+  <div class="back-bar">
+    <button id="back-btn" class="btn-secondary">← Back</button>
+  </div>
+
+  <!-- ✅ Product panel will be injected here -->
+  <div id="product-page-container"></div>
+</main>
+
+<footer class="footer">
+  © 2025 iTISHA.com | Codded By Towett Amos
+</footer>
+
+</body>
+</html>
